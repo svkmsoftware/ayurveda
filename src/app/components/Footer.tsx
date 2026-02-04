@@ -5,13 +5,15 @@ import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-green-800 pt-16 border-t border-green-500">
+    <footer className="bg-gradient-to-b from-white via-emerald-50 to-green-100 text-green-800 pt-16 border-t border-green-500/60">
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-4 gap-12">
         {/* About Us */}
         <div>
           <h3 className="text-2xl font-bold mb-4">About Us</h3>
           <p className="text-green-700 text-sm leading-relaxed">
-            Ayurveda Healing Center blends ancient wisdom with modern holistic treatments for mind, body, and soul.
+            SVKM&apos;s Smt. Krutiben Bhupeshbhai Patel Multispeciality Ayurveda
+            Hospital &amp; Research Centre blends classical Ayurvedic wisdom
+            with modern infrastructure for holistic care.
           </p>
         </div>
 
@@ -46,13 +48,13 @@ export default function Footer() {
         <div>
           <h3 className="text-2xl font-bold mb-4">Contact</h3>
           <p className="flex items-center gap-2 text-sm mb-2 text-green-700">
-            <Phone size={18} className="text-green-500" /> +91 98765 43210
+            <Phone size={18} className="text-green-500" /> OPD: 70455 17269
           </p>
           <p className="flex items-center gap-2 text-sm text-green-700">
-            <Mail size={18} className="text-green-500" /> info@ayurvedahealing.in
+            <Mail size={18} className="text-green-500" /> ayurveda.hospital@svkm.ac.in
           </p>
           <p className="mt-4 text-sm leading-relaxed text-green-700">
-            123 Wellness Street, Bengaluru, India
+            SVKM&apos;s Ayurveda College &amp; Hospital campus, Mumbai, India
           </p>
         </div>
 
@@ -84,7 +86,9 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="mt-16 border-t border-green-200 py-6 text-center text-sm text-green-600">
-        © {new Date().getFullYear()} Ayurveda Healing Center. All rights reserved.
+        © {new Date().getFullYear()} SVKM&apos;s Smt. Krutiben Bhupeshbhai Patel
+        Multispeciality Ayurveda Hospital &amp; Research Centre. All rights
+        reserved.
       </div>
     </footer>
   );

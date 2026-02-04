@@ -1,52 +1,58 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-interface Props {
-  name: string;
-  specialization: string;
-  qualification?: string;
-  image: string;
-  onClick?: () => void;
-}
+import Image from "next/image";
+import { Doctor } from "@/types/doctor";
 
 export default function DoctorCard({
-  name,
-  specialization,
-  qualification,
-  image,
+  doctor,
   onClick,
-}: Props) {
+}: {
+  doctor: Doctor;
+  onClick: () => void;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
       viewport={{ once: true }}
+      transition={{ duration: 0.4 }}
       onClick={onClick}
-      className="cursor-pointer group bg-white rounded-2xl shadow-md p-6 text-center border 
-                 border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative"
+      className="cursor-pointer bg-white rounded-2xl shadow-md p-6
+                 hover:shadow-xl hover:-translate-y-1 transition"
     >
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-700 to-green-400 rounded-t-2xl"></div>
-
-      <img
-        src={image}
-        alt={name}
-        className="w-32 h-32 rounded-full object-cover mx-auto shadow-md 
-                   group-hover:scale-105 transition duration-300"
+      <Image
+        src={doctor.image}
+        alt={doctor.name}
+        width={128}
+        height={128}
+        className="rounded-full mx-auto object-cover shadow-md"
       />
 
-      <h3 className="mt-4 text-lg font-semibold text-gray-900 group-hover:text-green-800 transition">
-        {name}
+      <h3 className="mt-4 text-lg font-semibold text-center text-gray-900">
+        {doctor.name}
       </h3>
 
-      {qualification && (
-        <p className="text-gray-500 text-xs mt-1">{qualification}</p>
-      )}
+      <p className="text-center text-sm text-gray-500">
+        {doctor.qualification}
+      </p>
 
-      <span className="inline-block mt-3 px-3 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">
-        {specialization}
-      </span>
+      <p className="text-center text-xs text-gray-500 mt-1">
+        {doctor.experience}+ years experience
+      </p>
+
+      <div className="flex justify-center mt-3">
+        <span className="px-3 py-1 text-xs bg-green-100 text-green-800 rounded-full">
+          {doctor.specialization}
+        </span>
+      </div>
+
+      <button
+        className="mt-4 w-full bg-green-700 text-white text-sm py-2 rounded-lg
+                   hover:bg-green-800 transition"
+      >
+        View Profile
+      </button>
     </motion.div>
   );
 }

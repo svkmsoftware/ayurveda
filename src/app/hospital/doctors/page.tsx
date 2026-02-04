@@ -3,29 +3,36 @@ import DoctorsSection from "./DoctorsSection";
 
 const doctorsList = [
   {
-    name: "Dr. A. B. Sharma",
-    specialization: "Kayachikitsa (General Medicine)",
-    qualification: "BAMS, MD (Ayu)",
-    image: "/images/male_user.png",
+    id: "1",
+    name: "Dr. Anil Sharma",
+    specialization: "Cardiology",
+    department: "Medicine",
+    qualification: "MD, DM (Cardiology)",
+    experience: 15,
+    image: "/doctors/doc1.jpg",
+    bio: "Expert cardiologist with extensive experience in interventional procedures.",
+    languages: ["English", "Hindi"],
+    opdTimings: "Mon–Fri | 10 AM – 2 PM",
+    consultationFee: 800,
   },
-  {
-    name: "Dr. Sunita Patil",
-    specialization: "Panchakarma",
-    qualification: "BAMS, MS (Ayu)",
-    image: "/images/female_user.png",
-  },
-  {
-    name: "Dr. Meera Joshi",
-    specialization: "Stree Rog & Prasuti Tantra",
-    qualification: "BAMS, MD (Ayu)",
-    image: "/images/female_user.png",
-  },
-  {
-    name: "Dr. Ketan Kulkarni",
-    specialization: "Shalya Tantra (Surgery)",
-    qualification: "BAMS, MS (Ayu)",
-    image: "/images/male_user.png",
-  },
+  // {
+  //   name: "Dr. Sunita Patil",
+  //   specialization: "Panchakarma",
+  //   qualification: "BAMS, MS (Ayu)",
+  //   image: "/images/female_user.png",
+  // },
+  // {
+  //   name: "Dr. Meera Joshi",
+  //   specialization: "Stree Rog & Prasuti Tantra",
+  //   qualification: "BAMS, MD (Ayu)",
+  //   image: "/images/female_user.png",
+  // },
+  // {
+  //   name: "Dr. Ketan Kulkarni",
+  //   specialization: "Shalya Tantra (Surgery)",
+  //   qualification: "BAMS, MS (Ayu)",
+  //   image: "/images/male_user.png",
+  // },
   // Add more doctors easily…
 ];
 

@@ -38,7 +38,7 @@ export default function RootLayout({
         className={`${lora.variable} ${nunito.variable} font-body antialiased bg-ayurvedaBeige text-ayurvedaGreen`}
       >
         <Navbar />
-        <main className="pt-25 md:pt-26">{children}</main>
+        <main className="pt-40 md:pt-44">{children}</main>
         <Footer />
       </body>
     </html>

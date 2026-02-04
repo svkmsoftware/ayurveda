@@ -2,16 +2,20 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu, X, PhoneCall, Mail, ChevronDown } from "lucide-react";
 import Image from "next/image";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  PhoneCall,
+  Stethoscope,
+  Ambulance,
+} from "lucide-react";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // FIXED STATE — separate parent/child dropdown
   const [activeParent, setActiveParent] = useState<string | null>(null);
   const [activeChild, setActiveChild] = useState<string | null>(null);
-
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -24,7 +28,6 @@ export default function Navbar() {
         setActiveChild(null);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
@@ -38,12 +41,6 @@ export default function Navbar() {
     setActiveChild(activeChild === menu ? null : menu);
   };
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-    setActiveParent(null);
-    setActiveChild(null);
-  };
-
   const menuItems = [
     { label: "Home", href: "/" },
     {
@@ -52,14 +49,8 @@ export default function Navbar() {
         { label: "About Institution", href: "/about/institution" },
         { label: "About SVKM", href: "/about/svkm" },
         { label: "Vision & Mission", href: "/about/mission-vision" },
-        {
-          label: "Leadership",
-          sub: [
-            { label: "President’s Message", href: "/about/president" },
-            { label: "Principal’s Message", href: "/about/principal" },
-            { label: "Management", href: "/about/management" },
-          ],
-        },
+        { label: "President's Message", href: "/about/president" },
+        { label: "Management", href: "/about/management" },
       ],
     },
     {
@@ -74,160 +65,185 @@ export default function Navbar() {
             { label: "Panchakarma", href: "/departments/panchakarma" },
           ],
         },
-        {
-          label: "OPD",
-          sub: [
-            { label: "Kayachikitsa OPD", href: "/about/president" },
-            { label: "Kaumarbhritya OPD", href: "/about/principal" },
-            { label: "Shalya Tantra OPD", href: "/about/management" },
-            {
-              label: "Prasutitantra & Striroga OPD",
-              href: "/about/management",
-            },
-            { label: "Shalakyatantra OPD", href: "/about/management" },
-          ],
-        },
-        {
-          label: "IDP",
-          sub: [
-            { label: "Panchakarma (Male)", href: "/about/president" },
-            { label: "Panchakarma (Female)", href: "/about/president" },
-            { label: "Kayachikitsa (Male)", href: "/about/principal" },
-            { label: "Kayachikitsa (Female)", href: "/about/principal" },
-            { label: "Shalyatantra (Male)", href: "/about/management" },
-            { label: "Shalyatantra (Female)", href: "/about/management" },
-          ],
-        },
-        { label: "Online Consultation", href: "/hospital/online-consultation" },
+        { label: "Online Consulting", href: "/hospital/online-consultation" },
       ],
     },
-    {
-      label: "For Students",
-      sub: [
-        { label: "List of Students", href: "/hospital/doctors" },
-        {
-          label: "Courses Offered",
-          sub: [
-            { label: "President’s Message", href: "/about/president" },
-            { label: "Principal’s Message", href: "/about/principal" },
-            { label: "Management", href: "/about/management" },
-          ],
-        },
-        { label: "Admission Process", href: "/hospital/doctors" },
-        { label: "Fees", href: "/hospital/doctors" },
-        { label: "Curriculum", href: "/hospital/doctors" },
-        { label: "Acadamic Time Table", href: "/hospital/doctors" },
-        { label: "Anti Ragging Committee", href: "/hospital/doctors" },
-      ],
-    },
-    { label: "Research & Publications", href: "/career" },
-    {
-      label: "Community",
-      sub: [
-        { label: "News & Events", href: "/hospital/doctors" },
-        { label: "Image Gallery", href: "/hospital/doctors" },
-        { label: "Blogs", href: "/hospital/doctors" },
-      ],
-    },
+    { label: "Research", href: "/research" },
     { label: "Career", href: "/career" },
     { label: "Contact Us", href: "/contact" },
   ];
 
   return (
-    <header className="w-full fixed top-0 z-50">
-      {/* Top Bar */}
-      <div className="bg-green-100 text-green-700 text-sm py-2 border-b border-green-500">
-        <div className="container mx-auto flex justify-between items-center px-4 md:px-8">
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-1">
-              <PhoneCall size={15} />
-              <span>+91 98765 43210</span>
+    <header className="fixed top-0 w-full z-50">
+      <div className="bg-white/95 backdrop-blur-md border-b border-green-100 shadow-sm">
+        <div className="container mx-auto px-4 py-3">
+          <div className="hidden lg:flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <Image
+                src="/images/ayurveda_gemini_log.png"
+                alt="Ayurveda Hospital Logo"
+                width={90}
+                height={90}
+                className="h-[85px] w-auto"
+                priority
+              />
+              <div className="leading-tight">
+                <p className="text-sm font-semibold text-green-700">
+                  SVKM&apos;s
+                </p>
+                <p className="text-lg font-bold text-green-900">
+                  Smt. Krutiben Bhupeshbhai Patel
+                </p>
+                <p className="text-lg font-bold text-green-900">
+                  Multispeciality Ayurveda Hospital
+                </p>
+                <p className="text-lg font-bold text-green-900">
+                  &amp; Research Centre
+                </p>
+              </div>
             </div>
-            <div className="hidden lg:flex items-center space-x-1">
-              <Mail size={15} />
-              <span>info@svkmayurveda.edu.in</span>
+
+            {/* CENTER : CONTACT INFO */}
+            <div className="flex gap-10 text-sm">
+              <div className="flex items-center gap-2">
+                <PhoneCall className="text-green-700" size={18} />
+                <div>
+                  <p className="font-semibold">OPD Appointment</p>
+                  <p className="text-green-700">7045517269</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Stethoscope className="text-green-700" size={18} />
+                <div>
+                  <p className="font-semibold">Diagnostic Center</p>
+                  <p className="text-green-700">99207 47327</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Ambulance className="text-red-600" size={18} />
+                <div>
+                  <p className="font-semibold text-red-600">Emergency</p>
+                  <p>022 2427 8888</p>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT : SVKM */}
+            <div className="flex items-center gap-2 text-xs font-semibold text-green-800">
+              <a href="https://svkm.ac.in" target="_blank">
+                <Image
+                  src="/images/svkm-logo.png"
+                  width={70}
+                  height={70}
+                  alt="svkm-logo"
+                />
+              </a>
+              {/* <span>Shri Vile Parle Kelavani Mandal</span> */}
             </div>
           </div>
-          <div className="text-xs md:text-sm font-medium hidden md:block">
-            SVKM&apos;s Krutiben Bhupeshbhai Patel Ayurveda College, Hospital &
-            Research Center
+
+          {/* ================= MOBILE VIEW ================= */}
+          <div className="lg:hidden">
+            {/* LOGO + NAME */}
+            <div className="flex items-start gap-3">
+              <Image
+                src="/images/ayurveda_gemini_log.png"
+                alt="Ayurveda Hospital Logo"
+                width={70}
+                height={70}
+                className="h-[65px] w-auto shrink-0"
+              />
+              <div className="leading-tight">
+                <p className="text-xs font-semibold text-green-700">
+                  SVKM&apos;s
+                </p>
+                <p className="text-sm font-bold text-green-900">
+                  Smt. Krutiben Bhupeshbhai Patel
+                </p>
+                <p className="text-sm font-bold text-green-900">
+                  Multispeciality Ayurveda Hospital
+                </p>
+                <p className="text-xs font-bold text-green-900">
+                  &amp; Research Centre
+                </p>
+              </div>
+            </div>
+
+            {/* CONTACT BUTTONS */}
+            <div className="mt-3 flex justify-between gap-2 text-xs">
+              <a
+                href="tel:7045517269"
+                className="flex items-center gap-1 bg-green-50 text-green-800 px-2 py-1 rounded"
+              >
+                <PhoneCall size={14} />
+                OPD
+              </a>
+
+              <a
+                href="tel:9920747327"
+                className="flex items-center gap-1 bg-green-50 text-green-800 px-2 py-1 rounded"
+              >
+                <Stethoscope size={14} />
+                Diagnostic
+              </a>
+
+              <a
+                href="tel:02224278888"
+                className="flex items-center gap-1 bg-red-50 text-red-600 px-2 py-1 rounded"
+              >
+                <Ambulance size={14} />
+                Emergency
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Navbar */}
+      {/* ================= MAIN NAVBAR ================= */}
       <nav
         ref={dropdownRef}
-        className="bg-white backdrop-blur-md shadow-sm border-b border-green-500"
+        className="bg-gradient-to-r from-green-900 via-green-800 to-emerald-800 text-white shadow-md border-t border-green-900/40"
       >
-        <div className="container mx-auto flex justify-between items-center py-2 px-4 md:px-8">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="text-2xl md:text-3xl font-bold text-green-800"
-          >
-            <Image
-              src="/images/nursing_logo.png"
-              alt="Logo"
-              width={180}
-              height={180}
-              className="w-auto h-[60px] md:h-[70px]"
-            />
-          </Link>
-
-          {/* Desktop Menu */}
-          <ul className="hidden lg:flex xl:space-x-5 md:space-x-3 text-green-800 font-medium relative text-sm xl:text-base">
+        <div className="container mx-auto flex items-center justify-between px-6 py-3">
+          {/* Menu */}
+          <ul className="hidden lg:flex items-center gap-6 font-medium">
             {menuItems.map((menu) => (
-              <li key={menu.label} className="relative group">
+              <li key={menu.label} className="relative">
                 {menu.sub ? (
                   <>
-                    {/* Parent Button */}
                     <button
                       onClick={() => toggleParent(menu.label)}
-                      className="flex items-center gap-1 hover:text-green-500 transition"
+                      className="flex items-center gap-1 hover:text-green-300"
                     >
                       {menu.label}
-                      <ChevronDown
-                        size={16}
-                        className={`transition-transform ${
-                          activeParent === menu.label ? "rotate-180" : ""
-                        }`}
-                      />
+                      <ChevronDown size={16} />
                     </button>
 
-                    {/* Parent Dropdown */}
                     {activeParent === menu.label && (
-                      <ul className="absolute bg-green-100 shadow-lg mt-2 py-2 w-56 rounded-lg border border-green-500 animate-fadeIn">
+                      <ul className="absolute top-full mt-3 w-56 text-green-800 dropdown-glass shadow-xl">
                         {menu.sub.map((sub) => (
-                          <li key={sub.label} className="relative group">
+                          <li key={sub.label} className="relative">
                             {sub.sub ? (
                               <>
-                                {/* Child Button */}
                                 <button
                                   onClick={() => toggleChild(sub.label)}
-                                  className="flex justify-between w-full text-left px-4 py-2 hover:bg-green-600 hover:text-white"
+                                  className="flex justify-between w-full px-4 py-2 hover:bg-green-600 hover:text-white"
                                 >
                                   {sub.label}
-                                  <ChevronDown
-                                    size={14}
-                                    className={`transition-transform ${
-                                      activeChild === sub.label
-                                        ? "rotate-180"
-                                        : ""
-                                    }`}
-                                  />
+                                  <ChevronDown size={14} />
                                 </button>
 
-                                {/* Third Level */}
                                 {activeChild === sub.label && (
-                                  <ul className="absolute left-full top-0 bg-green-50 shadow-lg py-2 w-56 rounded-lg border border-green-500 animate-fadeIn">
-                                    {sub.sub.map((third) => (
-                                      <li key={third.label}>
+                                  <ul className="absolute left-full top-0 w-56 dropdown-glass shadow-xl">
+                                    {sub.sub.map((child) => (
+                                      <li key={child.label}>
                                         <Link
-                                          href={third.href}
+                                          href={child.href}
                                           className="block px-4 py-2 hover:bg-green-600 hover:text-white"
                                         >
-                                          {third.label}
+                                          {child.label}
                                         </Link>
                                       </li>
                                     ))}
@@ -248,10 +264,7 @@ export default function Navbar() {
                     )}
                   </>
                 ) : (
-                  <Link
-                    href={menu.href}
-                    className="hover:text-green-500 transition"
-                  >
+                  <Link href={menu.href} className="hover:text-green-300">
                     {menu.label}
                   </Link>
                 )}
@@ -259,30 +272,35 @@ export default function Navbar() {
             ))}
           </ul>
 
+          {/* CTA */}
+          <Link
+            href="/appointment"
+            className="hidden lg:flex items-center gap-2 bg-green-500 px-4 py-2 rounded-md font-semibold hover:bg-green-600"
+          >
+            Online Consulting
+          </Link>
+
           {/* Mobile Button */}
           <button
-            className="lg:hidden text-green-700"
-            onClick={toggleMobileMenu}
+            className="lg:hidden"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+            {mobileMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="bg-green-50 border-t border-green-500 lg:hidden animate-fadeIn">
-            <ul className="flex flex-col p-4 space-y-2 text-green-800">
-              {menuItems.map((item) => (
-                <li key={item.label}>
-                  <Link
-                    href={item.href || "#"}
-                    className="block py-2 border-b border-green-400 hover:text-green-600"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <div className="lg:hidden bg-green-900 px-6 py-4">
+            {menuItems.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href || "#"}
+                className="block py-2 border-b border-green-700"
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
         )}
       </nav>

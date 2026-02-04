@@ -1,7 +1,10 @@
 import AboutSection from "./components/AboutUsSection";
+import ConditionsWeTreat from "./components/ConditionsWeTreat";
 import ContactUs from "./components/ContactUs";
 import Gallery from "./components/Gallery";
 import HeroSection from "./components/HeroSection";
+import HowOnlineConsultationWorks from "./components/HowOnlineConsultationWorks";
+import OurAyurvedicSpecialities from "./components/OurAyurvedicSpecialities";
 import Departments from "./components/OurDepartmentsSection";
 import FacultySection from "./components/OurExpertsSection";
 import NoticeRunner from "./components/RunnerNotice";
@@ -22,6 +25,9 @@ export default function Home() {
       <HeroSection />
       <NoticeRunner notices={notices} />
       <AboutSection />
+      <ConditionsWeTreat />
+      <OurAyurvedicSpecialities />
+      <HowOnlineConsultationWorks />
       <WhyChooseUs />
       <Departments />
       <FacultySection />
