@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import React from "react";
 import {
   Stethoscope,
   Leaf,
@@ -50,7 +51,7 @@ const specialities: Speciality[] = [
   },
 ];
 
-export default function OurAyurvedicSpecialities(): JSX.Element {
+export default function OurAyurvedicSpecialities(): React.JSX.Element {
   return (
     <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">

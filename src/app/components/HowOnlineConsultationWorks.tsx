@@ -1,11 +1,11 @@
 "use client";
-
+import React from "react";
 import { FileText, Search, PhoneCall } from "lucide-react";
 
 interface Step {
   title: string;
   desc: string;
-  icon: JSX.Element;
+  icon: React.JSX.Element;
 }
 
 const steps: Step[] = [
@@ -26,7 +26,7 @@ const steps: Step[] = [
   },
 ];
 
-export default function HowOnlineConsultationWorks(): JSX.Element {
+export default function HowOnlineConsultationWorks(): React.JSX.Element {
   return (
     <section className="bg-green-50 py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">

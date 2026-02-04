@@ -1,3 +1,4 @@
+"use client";
 import PageHeroSection from "@/app/components/PageHeroSection";
 import dynamic from "next/dynamic";
 
@@ -5,7 +6,7 @@ const OnlineConsultation = dynamic(
   () => import("@/app/hospital/online-consultation/page"),
   {
     ssr: false,
-  }
+  },
 );
 
 export default function AppointmentPage() {
@@ -21,4 +22,3 @@ export default function AppointmentPage() {
     </>
   );
 }
-

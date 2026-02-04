@@ -64,7 +64,7 @@ const conditions: ConditionItem[] = [
   },
 ];
 
-export default function ConditionsWeTreat(): JSX.Element {
+export default function ConditionsWeTreat() {
   return (
     <section className="bg-green-50 py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
@@ -73,8 +73,8 @@ export default function ConditionsWeTreat(): JSX.Element {
         </h2>
 
         <p className="text-green-700 max-w-2xl mx-auto mb-12">
-          We provide personalized Ayurvedic treatment for a wide range of chronic
-          and lifestyle-related health conditions.
+          We provide personalized Ayurvedic treatment for a wide range of
+          chronic and lifestyle-related health conditions.
         </p>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
